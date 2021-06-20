@@ -1,15 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import Products from './Components/Products/Products';
 
 const App = () => {
-    const [name, setName] = useState('name');
+    const [name, setName] = useState('Numan');
+    const [newname, setNewName] = useState('N');
     return (
         <View style={styles.container}>
-            <Text style={styles.text}> Hello </Text>
-            <Text style={{ ...styles.text, color: 'green' }}> Numan </Text>
-            <Text style={styles.text}> Ahmed </Text>
+            <Text style={styles.text}> {name} </Text>
+            <TextInput
+                style={{ fontSize: 30, height: 40 }}
+                placeHolder='Type something'
+                onChangeText={(text) => setNewName(text)}
+            />
+
+            <Button onPress={() => setName(newname)} title="Change Name" />
+
             <StatusBar style="auto" />
         </View >
     );
@@ -26,16 +33,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-    text: {
-        height: 100,
-        width: 100,
-        borderWidth: 3,
-        color: 'red',
-        backgroundColor: 'gray',
-        margin: 5,
-        textAlign: 'center',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        fontSize: 20
-    }
+
 });
